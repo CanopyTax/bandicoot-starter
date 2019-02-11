@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js --open",
-    "build": "webpack --config webpack.config.js -p"
+    "build": "rimraf dist && webpack --config webpack.config.js -p && copyfiles src/index.html dist -f"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,6 +26,8 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "copyfiles": "^2.1.0",
+    "rimraf": "^2.6.3",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
