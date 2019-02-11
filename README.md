@@ -1,2 +1,1 @@
-# bandicoot-starter
-A starter repo for https://bandicoot.js.org
+A starter repo for https://bandicoot.js.org.
