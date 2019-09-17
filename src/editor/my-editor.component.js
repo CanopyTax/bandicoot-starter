@@ -1,18 +1,18 @@
-import React from 'react'
-import {RichTextContainer, RichTextEditor} from 'bandicoot'
-import {Scoped} from 'kremling'
-import Bold from './control-buttons/bold.component.js'
-import Italic from './control-buttons/italic.component.js'
-import Underline from './control-buttons/underline.component.js'
-import FontSize from './control-buttons/font-size.component.js'
-import JustifyLeft from './control-buttons/justify-left.component.js'
-import JustifyCenter from './control-buttons/justify-center.component.js'
-import JustifyRight from './control-buttons/justify-right.component.js'
-import JustifyFull from './control-buttons/justify-full.component.js'
-import Indent from './control-buttons/indent.component.js'
-import Outdent from './control-buttons/outdent.component.js'
-import Link from './control-buttons/link.component.js'
-import Image from './control-buttons/image.component.js'
+import React from "react";
+import { RichTextContainer, RichTextEditor } from "bandicoot";
+import { Scoped } from "kremling";
+import Bold from "./control-buttons/bold.component.js";
+import Italic from "./control-buttons/italic.component.js";
+import Underline from "./control-buttons/underline.component.js";
+import FontSize from "./control-buttons/font-size.component.js";
+import JustifyLeft from "./control-buttons/justify-left.component.js";
+import JustifyCenter from "./control-buttons/justify-center.component.js";
+import JustifyRight from "./control-buttons/justify-right.component.js";
+import JustifyFull from "./control-buttons/justify-full.component.js";
+import Indent from "./control-buttons/indent.component.js";
+import Outdent from "./control-buttons/outdent.component.js";
+import Link from "./control-buttons/link.component.js";
+import Image from "./control-buttons/image.component.js";
 
 export default function MyEditor() {
   return (
@@ -36,13 +36,19 @@ export default function MyEditor() {
             </div>
             <RichTextEditor
               className="my-editor"
-              initialHTML="<b>Bandicoot is a rich text editor for React</b>"
+              pasteFn={pasteFn}
+              placeholder="Bandicoot is a rich text editor for react"
+              sanitizeHTML={html => html}
             />
           </div>
         </RichTextContainer>
       </div>
     </Scoped>
-  )
+  );
+
+  function pasteFn(string) {
+    return string;
+  }
 }
 
 const css = `
@@ -66,4 +72,4 @@ const css = `
   justify-content: flex-end;
   margin-bottom: 4rem;
 }
-`
+`;

@@ -1,74 +1,73 @@
-import React, {useState, useEffect} from 'react'
-import {useFontSize} from 'bandicoot'
-import ControlButton from './control-button.component.js'
-import {Scoped} from 'kremling'
+import React, { useState, useEffect } from "react";
+import { useFontSize } from "bandicoot";
+import ControlButton from "./control-button.component.js";
+import { useCss } from "kremling";
 
 export default function FontSize() {
-  const [popupOpen, setPopupOpen] = useState(false)
-  const {currentlySelectedFontSize, setSize} = useFontSize({defaultFontSize: '16px', fontSizes})
-  useClosePopupOnWindowClick()
+  const [popupOpen, setPopupOpen] = useState(false);
+  const { currentlySelectedFontSize, setSize } = useFontSize({
+    defaultFontSize: "16px",
+    fontSizes
+  });
+  const scope = useCss(css);
+  useClosePopupOnWindowClick();
 
-  const icon = ({color}) => <span style={{cursor: 'default', color, fontSize: '18rem'}}>{currentlySelectedFontSize.replace('px', '')}</span>
+  const icon = ({ color }) => (
+    <span style={{ cursor: "default", color, fontSize: "18rem" }}>
+      {currentlySelectedFontSize.replace("px", "")}
+    </span>
+  );
 
   return (
-    <Scoped css={css}>
-      <div className="font-size-container">
-        <ControlButton
-          title="Font size"
-          onClick={togglePopup}
-          icon={icon}
-        />
-        {popupOpen &&
-          <div className="popup">
-            <ul onClick={evt => evt.stopPropagation()}>
-              {fontSizes.map(fontSizeOption)}
-            </ul>
-          </div>
-        }
-      </div>
-    </Scoped>
-  )
+    <div className="font-size-container" {...scope}>
+      <ControlButton title="Font size" onClick={togglePopup} icon={icon} />
+      {popupOpen && (
+        <div
+          className="popup"
+          role="button"
+          tabIndex={0}
+          onClick={evt => evt.stopPropagation()}
+        >
+          <ul>{fontSizes.map(fontSizeOption)}</ul>
+        </div>
+      )}
+    </div>
+  );
 
   function togglePopup() {
-    setPopupOpen(!popupOpen)
+    setPopupOpen(!popupOpen);
   }
 
   function fontSizeOption(css) {
     return (
       <li key={css}>
-        <span role="button" onClick={setFontSize}>
-          {css.replace('px', '')}
+        <span role="button" onClick={setFontSize} tabIndex={0}>
+          {css.replace("px", "")}
         </span>
       </li>
-    )
+    );
 
     function setFontSize() {
-      setPopupOpen(false)
-      setSize(css)
+      setPopupOpen(false);
+      setSize(css);
     }
   }
 
   function useClosePopupOnWindowClick() {
     useEffect(() => {
       if (popupOpen) {
-        window.addEventListener('click', closePopup)
-        return () => window.removeEventListener('click', closePopup)
+        window.addEventListener("click", closePopup);
+        return () => window.removeEventListener("click", closePopup);
 
         function closePopup() {
-          setPopupOpen(false)
+          setPopupOpen(false);
         }
       }
-    }, [popupOpen, setPopupOpen])
+    }, [popupOpen, setPopupOpen]);
   }
 }
 
-const fontSizes = [
-  '12px',
-  '14px',
-  '16px',
-  '18px',
-  '24px',
-]
+const fontSizes = ["12px", "14px", "16px", "18px", "24px"];
 
 const css = `
 & ul {
@@ -106,4 +105,4 @@ const css = `
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.26);
   z-index: 100;
 }
-`
+`;

@@ -1,26 +1,25 @@
-import React from 'react'
-import {Scoped} from 'kremling'
+import React from "react";
+import { useCss } from "kremling";
 
 export default function Navbar() {
+  const scope = useCss(css);
+
   return (
-    <Scoped css={css}>
-      <div className="navbar">
-        <div className="content">
-          <a className="left" href="https://github.com/CanopyTax/bandicoot-starter">
-            Bandicoot Demo
-          </a>
-          <div className="right">
-            <a href="https://bandicoot.js.org">
-              Docs
-            </a>
-            <a href="https://github.com/CanopyTax/bandicoot">
-              Github Page
-            </a>
-          </div>
+    <div className="navbar" {...scope}>
+      <div className="content">
+        <a
+          className="left"
+          href="https://github.com/CanopyTax/bandicoot-starter"
+        >
+          Bandicoot Demo
+        </a>
+        <div className="right">
+          <a href="https://bandicoot.js.org">Docs</a>
+          <a href="https://github.com/CanopyTax/bandicoot">Github Page</a>
         </div>
       </div>
-    </Scoped>
-  )
+    </div>
+  );
 }
 
 const css = `
@@ -66,4 +65,4 @@ const css = `
   height: 100%;
   padding-right: 12rem;
 }
-`
+`;

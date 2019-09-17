@@ -1,19 +1,20 @@
 {
   "name": "bandicoot-starter",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
-    "bandicoot": "^2.0.6",
-    "kremling": "^1.2.0",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "bandicoot": "file:../bandicoot",
+    "kremling": "^2.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --open",
-    "build": "rimraf dist && webpack --config webpack.config.js -p && copyfiles src/index.html dist -f"
+    "start": "webpack-dev-server",
+    "lint": "eslint src",
+    "build": "rimraf dist && webpack --mode=production && copyfiles src/index.html dist -f"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn pretty-quick --staged"
+    }
   },
   "browserslist": [
     ">0.2%",
@@ -22,14 +23,20 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
+    "babel-eslint": "^11.0.0-beta.0",
+    "babel-loader": "^8.0.6",
     "copyfiles": "^2.1.0",
+    "eslint": "^6.0.1",
+    "eslint-config-react-important-stuff": "^1.1.0",
+    "husky": "^3.0.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
     "rimraf": "^2.6.3",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
   }
 }

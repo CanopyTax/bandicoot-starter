@@ -1,12 +1,10 @@
-import React from 'react'
-import {Scoped} from 'kremling'
+import React from "react";
+import { useCss } from "kremling";
 
 export default function Styleguide(props) {
-  return (
-    <Scoped css={css}>
-      {props.children}
-    </Scoped>
-  )
+  const scope = useCss(css);
+
+  return <div {...scope}>{props.children}</div>;
 }
 
 const css = `
@@ -20,4 +18,4 @@ const css = `
 body {
   font-size: 16rem;
 }
-`
+`;
