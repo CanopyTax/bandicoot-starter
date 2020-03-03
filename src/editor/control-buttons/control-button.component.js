@@ -5,15 +5,13 @@ export default function ControlButton(props) {
   const Icon = props.icon;
   return (
     <Scoped css={css}>
-      <span
-        role="button"
-        tabIndex={0}
+      <button
         onClick={props.onClick}
         className="control-button"
         title={props.title}
       >
         <Icon color={props.isActive ? "var(--green)" : "var(--dark-gray)"} />
-      </span>
+      </button>
     </Scoped>
   );
 }
@@ -27,6 +25,8 @@ const css = `
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+  margin: 2rem;
 }
 
 & .control-button:hover {
