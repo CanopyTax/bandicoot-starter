@@ -82,7 +82,7 @@ const css = `
 }
 
 & li span[role="button"] {
-  width: 100%;
+  width: calc(100% - 16rem);
   height: 100%;
   display: flex;
   align-items: center;
@@ -104,5 +104,6 @@ const css = `
   border-radius: 4rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.26);
   z-index: 100;
+  background-color: white;
 }
 `;
