@@ -1,7 +1,7 @@
 {
   "name": "bandicoot-starter",
   "dependencies": {
-    "bandicoot": "file:../bandicoot",
+    "bandicoot": "^4.3.0",
     "kremling": "^2.0.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
