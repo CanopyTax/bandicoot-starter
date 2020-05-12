@@ -7,7 +7,7 @@ export default function FontSize() {
   const [popupOpen, setPopupOpen] = useState(false);
   const { currentlySelectedFontSize, setSize } = useFontSize({
     defaultFontSize: "16px",
-    fontSizes
+    fontSizes,
   });
   const scope = useCss(css);
   useClosePopupOnWindowClick();
@@ -26,7 +26,7 @@ export default function FontSize() {
           className="popup"
           role="button"
           tabIndex={0}
-          onClick={evt => evt.stopPropagation()}
+          onClick={(evt) => evt.stopPropagation()}
         >
           <ul>{fontSizes.map(fontSizeOption)}</ul>
         </div>

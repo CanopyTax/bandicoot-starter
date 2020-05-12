@@ -49,7 +49,7 @@ export default function MyEditor() {
                 className="my-editor"
                 pasteFn={pasteFn}
                 placeholder="Bandicoot is a rich text editor for react"
-                sanitizeHTML={html => html}
+                sanitizeHTML={(html) => html}
               />
             </div>
             <div className="right"></div>

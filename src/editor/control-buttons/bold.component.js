@@ -1,11 +1,14 @@
-import React from 'react'
-import ControlButton from './control-button.component.js'
-import BoldIcon from '../icons/bold-icon.component.js'
-import {useDocumentExecCommand, useDocumentQueryCommandState} from 'bandicoot'
+import React from "react";
+import ControlButton from "./control-button.component.js";
+import BoldIcon from "../icons/bold-icon.component.js";
+import {
+  useDocumentExecCommand,
+  useDocumentQueryCommandState,
+} from "bandicoot";
 
 export default function Bold() {
-  const {performCommand} = useDocumentExecCommand('bold')
-  const {isActive} = useDocumentQueryCommandState('bold')
+  const { performCommand } = useDocumentExecCommand("bold");
+  const { isActive } = useDocumentQueryCommandState("bold");
 
   return (
     <ControlButton
@@ -14,5 +17,5 @@ export default function Bold() {
       icon={BoldIcon}
       isActive={isActive}
     />
-  )
+  );
 }
