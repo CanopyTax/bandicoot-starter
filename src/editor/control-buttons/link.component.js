@@ -29,7 +29,7 @@ export default function Link(props) {
                 <div>Displayed Text</div>
                 <input
                   value={displayedText}
-                  onChange={evt => setDisplayedText(evt.target.value)}
+                  onChange={(evt) => setDisplayedText(evt.target.value)}
                   ref={displayedTextRef}
                 />
               </label>
@@ -39,7 +39,7 @@ export default function Link(props) {
                 <div>Link</div>
                 <input
                   value={link}
-                  onChange={evt => setLink(evt.target.value)}
+                  onChange={(evt) => setLink(evt.target.value)}
                 />
               </label>
             </div>

@@ -3,7 +3,7 @@ import ControlButton from "./control-button.component.js";
 import OrderedListIcon from "../icons/ordered-list-icon.component.js";
 import {
   useDocumentExecCommand,
-  useDocumentQueryCommandState
+  useDocumentQueryCommandState,
 } from "bandicoot";
 
 export default function OrderedList() {

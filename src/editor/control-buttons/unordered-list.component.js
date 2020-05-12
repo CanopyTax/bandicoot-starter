@@ -3,7 +3,7 @@ import ControlButton from "./control-button.component.js";
 import UnorderedListIcon from "../icons/unordered-list-icon.component.js";
 import {
   useDocumentExecCommand,
-  useDocumentQueryCommandState
+  useDocumentQueryCommandState,
 } from "bandicoot";
 
 export default function UnorderedList() {
