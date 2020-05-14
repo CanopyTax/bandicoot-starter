@@ -20,7 +20,9 @@ import AtomicBlock from "./control-buttons/atomic-block.component.js";
 export default function MyEditor() {
   return (
     <Scoped css={css}>
-      <div>
+      <div className="content-container">
+        <div className="title">Bandicoot</div>
+        <div>A lightweight rich-text editor for React</div>
         <RichTextContainer>
           <div className="editor-container">
             <div className="left">
@@ -52,7 +54,11 @@ export default function MyEditor() {
                 sanitizeHTML={(html) => html}
               />
             </div>
-            <div className="right"></div>
+            <div className="right">
+              <a href="https://github.com/CanopyTax/bandicoot-starter">
+                &lt;demo source&gt;
+              </a>
+            </div>
           </div>
         </RichTextContainer>
       </div>
@@ -65,10 +71,21 @@ export default function MyEditor() {
 }
 
 const css = `
+& .content-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100rem;
+}
+& .title {
+  font-size: 36rem;
+  margin-bottom: 15rem;
+}
 & .editor-container {
   margin-top: 100rem;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 & .my-editor {
@@ -88,6 +105,16 @@ const css = `
 
 & .left, .right {
   flex: 1;
+}
+
+& .right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+& .right a {
+  margin-left: 20rem;
 }
 
 & .left {
