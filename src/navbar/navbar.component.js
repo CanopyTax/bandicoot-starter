@@ -5,64 +5,39 @@ export default function Navbar() {
   const scope = useCss(css);
 
   return (
-    <div className="navbar" {...scope}>
-      <div className="content">
-        <a
-          className="left"
-          href="https://github.com/CanopyTax/bandicoot-starter"
-        >
-          Bandicoot Demo
-        </a>
-        <div className="right">
-          <a href="https://bandicoot.js.org">Docs</a>
-          <a href="https://github.com/CanopyTax/bandicoot">Github Page</a>
-        </div>
-      </div>
+    <div className="links" {...scope}>
+      <a className="iconWithText" href="https://github.com/CanopyTax/bandicoot">
+        <img
+          src="https://image.flaticon.com/icons/svg/25/25231.svg"
+          height={40}
+          alt="github"
+        />
+        github
+      </a>
+      <a className="iconWithText" href="https://bandicoot.js.org">
+        <img
+          src="http://cliparts101.com/files/965/20F77B453902250C822F8602E402B866/Bandicoot_2.png"
+          height={40}
+          alt="bandicoot"
+        />
+        docs
+      </a>
     </div>
   );
 }
 
 const css = `
-& .navbar {
+& .iconWithText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20rem;
+}
+& .links {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 20rem;
+  right: 30rem;
   height: 60rem;
-}
-
-& .content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--dark-gray);
-  color: white;
-  height: 100%;
-  width: 100%;
-}
-
-& .content a, .content a:visited {
-  text-decoration: none;
-  height: 100%;
-  padding: 0 8rem;
-  color: white;
-  display: flex;
-  align-items: center;
-}
-
-& .content a:hover {
-  opacity: 0.6;
-}
-
-& .left {
-  font-size: 24rem;
-  padding-left: 16rem !important;
-}
-
-& .right {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding-right: 12rem;
 }
 `;
