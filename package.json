@@ -10,7 +10,7 @@
     "start": "webpack-dev-server",
     "lint": "eslint src",
     "build": "rimraf dist && webpack --mode=production && copyfiles src/index.html dist -f",
-    "build-pages": "rimraf dist && webpack --mode=production && copyfiles src/gh-pages-index.html dist -f"
+    "build-pages": "rimraf dist && webpack --mode=production && copyfiles src/gh-pages-index.html dist -f && mv dist/gh-pages-index.html dist/index.html"
   },
   "husky": {
     "hooks": {
