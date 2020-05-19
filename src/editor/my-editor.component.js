@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { RichTextContainer, RichTextEditor } from "bandicoot";
 import { Scoped } from "kremling";
 import Bold from "./control-buttons/bold.component.js";
@@ -16,8 +16,10 @@ import Outdent from "./control-buttons/outdent.component.js";
 import Link from "./control-buttons/link.component.js";
 import Image from "./control-buttons/image.component.js";
 import AtomicBlock from "./control-buttons/atomic-block.component.js";
+import { initialHTML } from "./initial-html.js";
 
 export default function MyEditor() {
+  const editorRef = useRef();
   return (
     <Scoped css={css}>
       <div className="content-container">
@@ -52,9 +54,16 @@ export default function MyEditor() {
                 pasteFn={pasteFn}
                 placeholder="Bandicoot is a rich text editor for react"
                 sanitizeHTML={(html) => html}
+                initialHTML={initialHTML}
+                ref={editorRef}
               />
             </div>
             <div className="right">
+              <div>
+                <button className="restyledButton" onClick={reset}>
+                  reset editor
+                </button>
+              </div>
               <a href="https://github.com/CanopyTax/bandicoot-starter">
                 &lt;demo source&gt;
               </a>
@@ -67,6 +76,10 @@ export default function MyEditor() {
 
   function pasteFn(string) {
     return string;
+  }
+
+  function reset() {
+    editorRef.current.setHTML(initialHTML);
   }
 }
 
@@ -90,17 +103,33 @@ const css = `
 
 & .my-editor {
   min-width: 500rem;
-  max-width: 800rem;
+  max-width: 600rem;
   height: 300rem;
   border: 1px solid var(--dark-gray);
   padding: 16rem;
-  border-radius: 2rem;
+  border-radius: 10rem;
+  transition: 0.4s;
+}
+
+& .my-editor:focus {
+  box-shadow: 0px 0.2em 1em #c4c4c4;
+  outline: none;
+  transition: 0.4s;
+}
+
+& .my-editor a {
+  color: var(--green);
+  cursor: pointer;
+}
+
+& button {
+  cursor: pointer;
 }
 
 & .control-buttons {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
 }
 
 & .left, .right {
@@ -113,7 +142,14 @@ const css = `
   flex-direction: column;
 }
 
-& .right a {
+& .restyledButton {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+}
+
+& .right > * {
   margin-left: 20rem;
 }
 

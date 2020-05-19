@@ -25,7 +25,7 @@ const css = `
   color: var(--green);
   cursor: pointer;
   outline: none;
-  margin : 8px 10px;
+  margin: 8px 20px;
 }
 .atomicBlockButton:hover, .atomicBlockButton:focus {
   font-weight: 550;
